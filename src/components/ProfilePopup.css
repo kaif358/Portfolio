@@ -1,0 +1,12 @@
+.skillsList {
+    margin-top: 0.75em;
+}
+.skillsList ul li{
+  display: inline-block;
+  border: 1px solid #444;
+  padding: 0.4em 0.8em;
+  border-radius: 50px;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+  font-size: 12px;
+}

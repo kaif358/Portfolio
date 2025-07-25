@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+html,body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: black;
+}
+
+.button-with-tail::before {
+  content: "";
+  position: absolute;
+  left: -11px; /* position tail to the left */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 10px solid rgba(255, 255, 255, 0.3); /* white tail */
+  
+}
+
+.gradient-border-button {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            background: #333;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInAndActivate 1.5s ease-out forwards;
+        }
+
+        .gradient-border-button::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff006e, #ff8500, #ffbe0b, #8338ec, #3a86ff, #06ffa5, #ff006e);
+            background-size: 300% 300%;
+            border-radius: 50px;
+            z-index: -1;
+            animation: gradientMove 6s linear infinite;
+            transition: background 0.3s ease;
+            opacity: 0;
+            animation-delay: 0.8s;
+        }
+
+        .gradient-border-button::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: #333;
+            border-radius: 50px;
+            z-index: -1;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+                opacity: 1;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes slideInAndActivate {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            80% {
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .gradient-border-button.active::before {
+            animation: gradientMove 6s linear infinite, borderFadeIn 0.5s ease-out 0.8s forwards;
+        }
+
+        @keyframes borderFadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .profile-pic {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #666, #999);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Hover effect */
+        .gradient-border-button:hover {
+            transform: scale(1.02);
+        }
+
+        .gradient-border-button:hover::before {
+            background: linear-gradient(45deg, #1e3c72, #2a5298, #74b9ff, #0984e3, #6c5ce7, #a29bfe, #1e3c72);
+        }
+
+        /* Alternative slower version */
+        .slow-gradient::before {
+            animation-duration: 6s;
+        }
+
+        /* Alternative colors */
+        .blue-gradient::before {
+            background: linear-gradient(45deg, #1e3c72, #2a5298, #74b9ff, #0984e3, #6c5ce7, #a29bfe, #1e3c72);
+        }
+
+        .neon-gradient::before {
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #ff1493, #00ff7f, #ff69b4, #ff0080);
+        }
+
+        
